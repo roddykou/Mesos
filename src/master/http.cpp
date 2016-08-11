@@ -378,14 +378,14 @@ void Master::Http::log(const Request& request)
   Option<string> userAgent = request.headers.get("User-Agent");
   Option<string> forwardedFor = request.headers.get("X-Forwarded-For");
 
-  LOG(INFO) << "HTTP " << request.method << " for " << request.url.path
-            << " from " << request.client
-            << (userAgent.isSome()
-                ? " with User-Agent='" + userAgent.get() + "'"
-                : "")
-            << (forwardedFor.isSome()
-                ? " with X-Forwarded-For='" + forwardedFor.get() + "'"
-                : "");
+  // LOG(INFO) << "HTTP " << request.method << " for " << request.url.path
+  //           << " from " << request.client
+  //           << (userAgent.isSome()
+  //               ? " with User-Agent='" + userAgent.get() + "'"
+  //               : "")
+  //           << (forwardedFor.isSome()
+  //               ? " with X-Forwarded-For='" + forwardedFor.get() + "'"
+  //               : "");
 }
 
 

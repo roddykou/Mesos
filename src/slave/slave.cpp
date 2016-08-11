@@ -4641,14 +4641,14 @@ void Slave::_checkDiskUsage(const Future<double>& usage)
                << (usage.isFailed() ? usage.failure() : "future discarded");
   } else {
     executorDirectoryMaxAllowedAge = age(usage.get());
-    LOG(INFO) << "Current disk usage " << std::setiosflags(std::ios::fixed)
-              << std::setprecision(2) << 100 * usage.get() << "%."
-              << " Max allowed age: " << executorDirectoryMaxAllowedAge;
+    // LOG(INFO) << "Current disk usage " << std::setiosflags(std::ios::fixed)
+    //           << std::setprecision(2) << 100 * usage.get() << "%."
+    //           << " Max allowed age: " << executorDirectoryMaxAllowedAge;
 
-    // We prune all directories whose deletion time is within
-    // the next 'gc_delay - age'. Since a directory is always
-    // scheduled for deletion 'gc_delay' into the future, only directories
-    // that are at least 'age' old are deleted.
+    //  We prune all directories whose deletion time is within
+    //  the next 'gc_delay - age'. Since a directory is always
+    //  scheduled for deletion 'gc_delay' into the future, only directories
+    //  that are at least 'age' old are deleted.
     gc->prune(flags.gc_delay - executorDirectoryMaxAllowedAge);
   }
   delay(flags.disk_watch_interval, self(), &Slave::checkDiskUsage);
